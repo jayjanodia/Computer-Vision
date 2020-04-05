@@ -1,0 +1,52 @@
+We will learn various image operations:
+    Smoothing
+    Blurring
+    Morphological Operations
+    Grab properties like color spaces and histograms
+    
+    
+History:
+
+Initially colors were represented in RGB format.
+However, that is an old format, in the 1970s HSL(Hue, Saturation, Lightness) and HSV(Hue, Saturation, Value) came into play.
+They are more closely aligned to the way the human vision actually percieves color.
+
+
+Blending and Pasting:
+If we work with multiple images, opencv allows us to blend those images together and paste images on top of each other
+
+Blending is done via the formula:
+new_pixel = alpha * pixel_1 + beta * pixel_2 + gamma.
+pixel_1 is the pixel of the first image, pixel_2 is the pixel of the second image
+
+Links for blending:
+https://docs.opencv.org/3.4/d0/d86/tutorial_py_image_arithmetics.html
+https://stackoverflow.com/questions/14063070/overlay-a-smaller-image-on-a-larger-image-python-opencv
+https://stackoverflow.com/questions/10469235/opencv-apply-mask-to-a-color-image/38493075
+
+
+
+Thresholding:
+Simple method of segmenting an image into different parts.
+Will convert an image to only consist of two values: white or black
+
+
+
+Smoothing:
+Helps in getting rid of noise, or helps an application focus on general details
+
+Blurring:
+Blur Kernel:
+Blur kernel is represented as a matrix of any size. eg:
+0.0625 0.125 0.0625
+0.1250 0.250 0.1250
+0.0625 0.125 0.0625
+
+
+Morphological Operators:
+Set of kernels that can achieve a variety of effects, such as reducing noise.
+
+
+Gradients:
+Image gradient is a directional change in the intensity or the color of an image. It is useful for edge detection in images.
+Refer to the following link: https://en.wikipedia.org/wiki/Image_gradient
