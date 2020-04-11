@@ -1,0 +1,68 @@
+Basic Object Tracking Methods:
+
+Optical Flow
+MeanShift and CamShift
+
+Advanced Technique: Built-In Tracking APIs
+
+
+
+
+Optical Flow is the patternn of apparent motion of image objects between 2 consecutive frames caused by the movement of object or camera.
+
+Function Used:
+1. Lucas-Kanade Function
+2. Gunner Farneback's algorithm
+
+
+Lucas-Kanade computes optical flow for a sparse feature set. Meaning only the points it was told to track.
+
+Gunner Farneback's algorithm is used to calculate dense optical flow, which will calculate flow for all points in an image. It will color them black if no flow is detected.
+
+Assumptions:
+1. Pixel intensity of an object does not change between consecutive frames
+2. Neighbouring pixels have similiar motion
+
+Meanshift Algorithm:
+Detects number of clusters. Type of Clustering algorithm.
+It will be given a target to track. It will calculate the color histogram of the target area, and then keep sliding the tracking window to the closest match (the cluster center).
+
+Camshift Algorithm:
+Unlike MeanShift, we can update the size of the window
+
+
+Tracking APIs:
+
+1. Boosting Tracker:
+    Based on AdaBoost Algorithm (HAAR Cascade uses this algorithm as well)
+    Evaluation occurs across multiple frames
+    
+    Cons:
+        Doesn't know when tracking has failed
+        
+2. MIL Tracker (Multiple Instance Learning):
+    Considers a neighborhood of points around the current location to create multiple instances.
+    
+    Cons:
+        Failure to track an object may not be reported back
+        Cannot recover from full obstruction
+        
+3. KCF Tracker (Kernelized Correlation Filters):
+    Exploits some properties of the MIL Tracker and the fact that many data points will overlap, leading to more accurate and faster tracking.
+    
+    Cons:
+    Cannot recover from full obstruction
+    
+4. TLD Tracker (Tracking, Learning and Detection):
+    Tracker follows the object from frame to frame
+    The detector localizes all appearances that have been observed so far and corrects the tracker if necessary.
+    The learning estimates detector's errors and updates it to avoid these errors in the future.
+    
+    Cons:
+        Can provide many false positives.
+        
+5. MedianFlow Tracker:
+    This tracker tracks the object in both forward and backward directions in time and measures the discrepancies between these two trajectories.
+    
+    Cons:
+        Fails under large motion (fast moving objects)
